@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="./js/index.js"></script>
+    <script src="./js/user.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+     <link rel="stylesheet" href="../weather/css/animate.min.css">
+     <script src="../js/checkall.js"></script>
+    <style>
+        body{
+    background-color: transparent !important;
+    padding: 20px 20px 20px 20px ;
+}#animatedCard {
+            opacity: 0; /* Initially hide the card */
+            animation: fadeInUp 1s forwards; /* Apply the fadeInUp animation */
+        } 
+    </style>
+</head>
+<body style="padding: 50px">
+<div class="card animate__animated animate__fadeIn" id="animatedCard" style="padding: 20px">
+    <div class="container ">
+        <div class="row">
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item">机长CID: <span id="cid"></span></li>
+                    <li class="list-group-item">航线: <span id="dep"></span> ~ <span id="app"></span></li>
+                </ul>
+                <br>
+                <select class="form-select" aria-label="Default select example" id="manner">
+                    <option selected>放行方式</option>
+                    <option value="1">常规语音(CN)</option>
+                    <option value="2">常规语音(EN)</option>
+                    <option value="3">PDC</option>
+                </select>
+                <br>
+                <select class="form-select" aria-label="Default select example" id="time">
+
+                </select><br>
+                <button type="button" class="btn btn-warning" style="width: 100%" onclick="signup()" id="push" disabled="true">加载中</button>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">机长</th>
+                            <th scope="col">放行时间</th>
+                            <th scope="col">放行方式</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="list">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

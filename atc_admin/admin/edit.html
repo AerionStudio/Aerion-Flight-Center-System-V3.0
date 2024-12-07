@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <style>
+      body {
+        padding: 30px 30px 30px 30px;
+        display: flex;
+        justify-content: center;
+        /*align-items: center;*/
+        height: 100vh;
+      }
+
+      .card-container {
+        padding: 20px;
+        width: 250vh;
+      }
+
+      .atc {
+        height: 502px;
+        max-height: 502px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card" style="padding: 10px">
+        <h1>用户：<span id="callsign"></span></h1>
+        <br />
+        <div class="card">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>权限</th>
+                <th scope="col">塔台及以下</th>
+                <th scope="col">进近</th>
+                <th scope="col">区域</th>
+                <th scope="col">塔台及以下(教员)</th>
+                <th scope="col">进近(教员)</th>
+                <th scope="col">区域(教员)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge text-bg-secondary">X</span></td>
+                <td><input type="radio" name="permission1" value="0" /></td>
+                <td><input type="radio" name="permission2" value="0" /></td>
+                <td><input type="radio" name="permission3" value="0" /></td>
+                <td><input type="radio" name="permission4" value="0" /></td>
+                <td><input type="radio" name="permission5" value="0" /></td>
+                <td><input type="radio" name="permission6" value="0" /></td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-warning">T</span></td>
+                <td><input type="radio" name="permission1" value="1" /></td>
+                <td><input type="radio" name="permission2" value="1" /></td>
+                <td><input type="radio" name="permission3" value="1" /></td>
+                <td><input type="radio" name="permission4" value="1" /></td>
+                <td><input type="radio" name="permission5" value="1" /></td>
+                <td><input type="radio" name="permission6" value="1" /></td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-success">√</span></td>
+                <td><input type="radio" name="permission1" value="2" /></td>
+                <td><input type="radio" name="permission2" value="2" /></td>
+                <td><input type="radio" name="permission3" value="2" /></td>
+                <td><input type="radio" name="permission4" value="2" /></td>
+                <td><input type="radio" name="permission5" value="2" /></td>
+                <td><input type="radio" name="permission6" value="2" /></td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-success">资深</span></td>
+                <td><input type="radio" name="permission1" value="3" /></td>
+                <td><input type="radio" name="permission2" value="3" /></td>
+                <td><input type="radio" name="permission3" value="3" /></td>
+                <td><input type="radio" name="permission4" value="3" /></td>
+                <td><input type="radio" name="permission5" value="3" /></td>
+                <td><input type="radio" name="permission6" value="3" /></td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-primary">√</span></td>
+                <td><input type="radio" name="permission1" value="4" /></td>
+                <td><input type="radio" name="permission2" value="4" /></td>
+                <td><input type="radio" name="permission3" value="4" /></td>
+                <td><input type="radio" name="permission4" value="4" /></td>
+                <td><input type="radio" name="permission5" value="4" /></td>
+                <td><input type="radio" name="permission6" value="4" /></td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-primary">T</span></td>
+                <td><input type="radio" name="permission1" value="5" /></td>
+                <td><input type="radio" name="permission2" value="5" /></td>
+                <td><input type="radio" name="permission3" value="5" /></td>
+                <td><input type="radio" name="permission4" value="5" /></td>
+                <td><input type="radio" name="permission5" value="5" /></td>
+                <td><input type="radio" name="permission6" value="5" /></td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-danger">暂停</span></td>
+                <td><input type="radio" name="permission1" value="6" /></td>
+                <td><input type="radio" name="permission2" value="6" /></td>
+                <td><input type="radio" name="permission3" value="6" /></td>
+                <td><input type="radio" name="permission4" value="6" /></td>
+                <td><input type="radio" name="permission5" value="6" /></td>
+                <td><input type="radio" name="permission6" value="6" /></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge text-bg-secondary">因事暂停权限</span>
+                </td>
+                <td><input type="radio" name="permission1" value="7" /></td>
+                <td><input type="radio" name="permission2" value="7" /></td>
+                <td><input type="radio" name="permission3" value="7" /></td>
+                <td><input type="radio" name="permission4" value="7" /></td>
+                <td><input type="radio" name="permission5" value="7" /></td>
+                <td><input type="radio" name="permission6" value="7" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br />
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="remark-span">备注</span>
+          <input
+            type="text"
+            id="remark"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="remark"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="teacher-span">教员</span>
+          <input
+            type="text"
+            id="teacher"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="teacher"
+          />
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="handleButtonClick()"
+        >
+          提交
+        </button>
+      </div>
+    </div>
+    <script>
+      var url = window.location.href;
+      var params = new URLSearchParams(new URL(url).search);
+      var callsign = params.get("callsign");
+      document.getElementById("callsign").innerText = callsign;
+      function handleButtonClick() {
+        function getSelectedRadioValue(inputs) {
+          for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].checked) {
+              return inputs[i].value;
+            }
+          }
+          return null;
+        }
+
+        var column1Inputs = document.querySelectorAll(
+          'input[name="permission1"]'
+        );
+        var column2Inputs = document.querySelectorAll(
+          'input[name="permission2"]'
+        );
+        var column3Inputs = document.querySelectorAll(
+          'input[name="permission3"]'
+        );
+        var column4Inputs = document.querySelectorAll(
+          'input[name="permission4"]'
+        );
+        var column5Inputs = document.querySelectorAll(
+          'input[name="permission5"]'
+        );
+        var column6Inputs = document.querySelectorAll(
+          'input[name="permission6"]'
+        );
+
+        var column1Value = getSelectedRadioValue(column1Inputs);
+        var column2Value = getSelectedRadioValue(column2Inputs);
+        var column3Value = getSelectedRadioValue(column3Inputs);
+        var column4Value = getSelectedRadioValue(column4Inputs);
+        var column5Value = getSelectedRadioValue(column5Inputs);
+        var column6Value = getSelectedRadioValue(column6Inputs);
+
+        var teacher = document.getElementById("teacher").value;
+        var remark = document.getElementById("remark").value;
+
+        let data = [
+          column1Value,
+          column2Value,
+          column3Value,
+          column4Value,
+          column5Value,
+          column6Value,
+        ];
+
+        console.log(data);
+        let dataString = data.map(JSON.stringify).join(",");
+        dataString = dataString.replace(/"/g, ""); // 使用正则表达式替换双引号
+        console.log(dataString);
+
+        if (data) {
+          const apiEndpoint =
+            "https://server.skydreamclub.cn/SetNewAtcGradeList.php";
+          var url = window.location.href;
+          var params = new URLSearchParams(new URL(url).search);
+          var callsign = params.get("callsign");
+          document.getElementById("callsign").innerText = callsign;
+
+          const requestData = {
+            token: "ab321818",
+            callsign: callsign,
+            teacher: teacher,
+            remark: remark,
+            gradelist: dataString,
+          };
+
+          fetch(apiEndpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              alert("修改成功");
+              window.location.href = "./index.html";
+            })
+            .catch((error) => {
+              console.error(
+                "There was a problem with the fetch operation:",
+                error
+              );
+            });
+        }
+      }
+    </script>
+
+    <script src="../js/bootstrap.js"></script>
+  </body>
+</html>

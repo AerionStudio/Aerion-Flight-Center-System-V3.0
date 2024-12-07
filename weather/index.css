@@ -1,0 +1,40 @@
+.card {
+    padding: 20px;
+    box-shadow: 0 0 1px 0 #1a1e21;
+}
+.title {
+    font-size: 40px;
+    color: #0b5ed7;
+}
+
+.en_name {
+    font-size: 20px;
+    color: #0b5ed7;
+}
+
+.metar_title{
+    font-size: 50px;
+    color: #503ce9;
+}
+.metar_un{
+    font-size: 30px;
+
+}
+.metar_decode{
+    font-size: 30px;
+}
+.time{
+    color: #b02a37;
+}
+body,
+html {
+    background-color: transparent !important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+}
+#animatedCard {
+    opacity: 0; /* Initially hide the card */
+    animation: fadeInUp 1s forwards; /* Apply the fadeInUp animation */
+}

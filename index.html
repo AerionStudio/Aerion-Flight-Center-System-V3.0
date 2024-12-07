@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkyDreamClub飞控中心</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css"> <!-- Your custom CSS file -->
+    <script src="./js/checkall.js"></script>
+    <link rel="stylesheet" href="./css/lantern.css">
+    <link rel="icon" href="./logo.png">
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "kpp9urix5f");
+    </script>
+
+    <style>
+        .bu {
+            position: absolute;
+            font-size: 15px;
+            padding-left: 10px;
+            width: 200px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="loading" class="container">
+    <div class="content">
+        <div class="logo-loading"><img src="./AM-STUDIO.png" alt="Logo"></div>
+        <br/>
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">AFCS-V3.0</span>
+        </div>
+    </div>
+</div>
+<div id="content_loading" style="display: none;">
+    <div class="wrapper">
+        <div class="top-bar">
+            <div class="toggle-btn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="utc-time" class="utc-time"></div>
+            <!-- You can add more elements to the top bar here -->
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="https://www.xfex.cc/assets/img/logo.png" alt="Logo">
+            </div>
+            <br>
+
+            <!-- Menu Items -->
+            <a href="./home" class="active" target="view">
+                <span><i class="fas fa-home"></i> 首页</span>
+            </a>
+            <a href="./map" target="view">
+                <span><i class="fas fa-map"></i> 连飞地图</span>
+            </a>
+            <a href="./activity" target="view">
+                <span><i class="fas fa-archive"></i> 活动报名</span>
+            </a>
+            <a href="./moment" target="view">
+                <span><i class="fas fa-clock"></i> 时刻申请</span>
+            </a>
+            <a href="./atc/atc_displays" target="view">
+                <span><i class="fas fa-broadcast-tower"></i> 权限一览</span>
+            </a>
+            <a href="./weather" target="view">
+                <span><i class="fas fa-cloud-sun"></i> 天气查询</span>
+            </a>
+            <a href="./route" target="view">
+                <span><i class="fas fa-plane-departure"></i> 航路查询</span>
+            </a>
+            <a href="./personal" target="view">
+                <span><i class="fas fa-user"></i> 个人中心</span>
+            </a>
+            <!-- Add more menu items here -->
+
+            <!-- Active Page Indicator -->
+
+            <div class="active-page"></div>
+        </div>
+
+        <div class="content" id="content">
+            <iframe src="./home/index.html" frameborder="0" name="view"></iframe>
+        </div>
+    </div>
+</div>
+
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/utc.js"></script>
+<script>
+    var pagesToPreload = [
+        // './activity/index.html',
+        './home/activity.html',
+        // './atc/atc_displays/index.html',
+        // './atc/map/index.html',
+        // './personal/index.html',
+        // Add more URLs here as needed
+    ];
+
+    function preloadPages() {
+        var loadedCount = 0;
+
+        function preloadPage(url) {
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = url;
+            iframe.onload = function () {
+                loadedCount++;
+                if (loadedCount === pagesToPreload.length) {
+                    // 当所有页面都加载完成时触发
+                    document.getElementById('loading').style.display = 'none'; // 隐藏加载中的元素
+                    document.getElementById('content_loading').style.display = 'block'; // 显示加载完成后的内容
+                }
+            };
+            document.body.appendChild(iframe); // 将iframe添加到页面中开始加载
+        }
+
+        // 遍历页面链接数组，并逐个预加载
+        for (var i = 0; i < pagesToPreload.length; i++) {
+            preloadPage(pagesToPreload[i]);
+        }
+    }
+
+    // 调用预加载函数
+    preloadPages();
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const topBar = document.querySelector('.top-bar');
+
+        sidebar.classList.toggle('collapsed');
+        topBar.classList.toggle('collapsed');
+    }
+</script>
+
+</body>
+</html>

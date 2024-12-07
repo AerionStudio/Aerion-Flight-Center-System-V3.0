@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/change.js"></script>
+    <script src="./js/index.js"></script>
+    <!--<script src="../js/checkall.js"></script>-->
+    <link rel="stylesheet" href="../home/layui/css/layui.css">
+    <title>Two Cards Side by Side with Bootstrap v5</title>
+    <link rel="stylesheet" href="../weather/css/animate.min.css">
+    <style type="text/css" media="all">
+        #animatedCard {
+            opacity: 0; /* Initially hide the card */
+            animation: fadeInUp 1s forwards; /* Apply the fadeInUp animation */
+        }
+        iframe{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "kpp9urix5f");
+    </script>
+</head>
+<body>
+
+<div class="container animate__animated animate__fadeIn" id="animatedCard">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Left card content goes here -->
+                    <h5 class="card-title">用户资料</h5>
+                    <div class="user">
+                        <div class="usernum">登录用户：<span class="badge text-bg-primary" id="user_num">6067</span>
+                        </div>
+                        <br>
+                        <div class="usergrade">用户等级：<span class="badge text-bg-success" id="user_grade">ADM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New card below the first left card -->
+            <div class="card mt-3">
+                <div class="card-body">
+                    <!-- Content of the new card goes here -->
+                    <h5 class="card-title">连线时长</h5>
+                    <div class="user">
+                        <div class="usernum">飞行时长：<span class="badge text-bg-info" id="flight_time">x</span></div>
+                        <div class="usergrade">管制时长：<span class="badge text-bg-info" id="atc_time">x</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Left card content goes here -->
+                    <h5 class="card-title">用户资料</h5>
+                    <div class="user">
+                        <div class="usernum">
+                            <label for="user_num_input">呼号</label>
+                            <input class="form-control" type="text" placeholder="6067" id="user_num_input"
+                                   aria-label="Disabled input example" disabled>
+                        </div>
+                        <br>
+                        <div class="useremail">
+                            <form class="row g-3">
+                                <div class="col-auto">
+                                    <label for="inputPassword2">修改邮箱</label>
+                                    <input type="email" class="form-control" id="email" placeholder="email">
+                                </div>
+                                <div class="col-auto">
+                                    <br>
+                                    <button type="button" class="btn btn-primary mb-3" onclick="changeemail()">保存</button>
+                                </div>
+                            </form>
+                            <br>
+                            <form class="row g-3">
+                                <div class="col-auto">
+                                    <label for="inputPassword2">修改密码</label>
+                                    <input type="password" class="form-control" id="inputPassword2"
+                                           placeholder="Password">
+                                </div>
+                                <div class="col-auto">
+                                    <br>
+                                    <button type="button" class="btn btn-primary mb-3" onclick="changepassword()">保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11 mt-3">
+            <div class="card ">
+                <div class="card-body">
+                    <!-- Content of the new card goes here -->
+                    <h5 class="card-title">航班列表 <span class="badge text-bg-success"
+                                                          id="flightlistnum"># x 架次</span></h5>
+                    <div class="card list">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">航班号</th>
+                                <th scope="col">起飞机场</th>
+                                <th scope="col">落地机场</th>
+                                <th scope="col">机型</th>
+                                <th scope="col">时间</th>
+                                <th scope="col">飞行时间</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="flightlist">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-11 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Content of the new card goes here -->
+                    <h5 class="card-title">管制列表 <span class="badge text-bg-success" id="atclistnum">x次</span></h5>
+                    <div class="card list">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">席位</th>
+                                <th scope="col">频率</th>
+                                <th scope="col">时间</th>
+                                <th scope="col">在线时长</th>
+                            </tr>
+                            </thead>
+                            <tbody id="atclist">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../home/layui/layui.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

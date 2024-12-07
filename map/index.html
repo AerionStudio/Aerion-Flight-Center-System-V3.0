@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>天梦俱乐部||天梦航空连飞地图</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/mapbox-gl.css"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" media="all"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+      <link rel="shortcut icon" href="https://www.xfex.cc/logo.png" type="image/x-icon">
+      <script src="https://cdn.jsdelivr.net/npm/@turf/turf@latest"></script>
+
+ <script >
+//     document.addEventListener('DOMContentLoaded', function () {
+
+//     document.onkeydown = function (event) {
+//         if (event.keyCode === 123) { // F12键
+//             return false;
+//         } else if (event.ctrlKey && event.shiftKey && event.keyCode === 73) { // Ctrl+Shift+I
+//             return false;
+//         }
+//     };
+//     document.addEventListener('contextmenu', function (e) {
+//         e.preventDefault();
+//     });
+// });
+// </script>
+<link rel="stylesheet" href="../weather/css/animate.min.css">
+    <script src="./js/echarts.js"></script>
+
+
+    <!--<script src="../js/checkall.js"></script>-->
+    <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            z-index: 0;
+        }
+
+        #copyright {
+            position: absolute;
+            bottom: 25px;
+            right: 2px;
+            font-size: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .card1 {
+            position: absolute;
+            z-index: 1;
+            margin: 30px 30px 30px 30px;
+        }
+
+        .card2 {
+            background-color: #F7F8F9;
+            padding: 20px;
+            position: absolute;
+            right: 20px;
+            z-index: 1;
+            margin: 30px 30px 30px 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 19px;
+        }
+
+        .card2 .card {
+            border-radius: 19px;
+            padding: 5px;
+            position: relative;
+        }
+
+        .about {
+            padding: 30px;
+            width: 60vh;
+            height: 100%;
+        }
+
+        .about h1 h4 {
+            position: absolute;
+            margin-bottom: 10px;
+        }
+
+        .airport {
+            padding: 30px;
+        }
+
+        .table1 {
+            height: 30vh;
+        }
+
+        table {
+            width: 60vh;
+        }
+         #animatedCard {
+            opacity: 0; /* Initially hide the card */
+            animation: fadeInUp 1s forwards; /* Apply the fadeInUp animation */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animate__animated animate__fadeIn" id="animatedCard">
+        <div class="card1">
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#imp"
+                aria-expanded="false" aria-controls="imp">
+            SkyDreamClub连飞服务器在线数据
+        </button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#va"
+                aria-expanded="false" aria-controls="va">
+            天梦航空在线数据(VA)
+        </button>
+    </p>
+    <div style="min-height: 120px;">
+        <div class="collapse collapse-horizontal" id="imp">
+            <div class="card card-body" style="width: 600px;">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true">机组列表
+                        </button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">管制列表
+                        </button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                         tabindex="0">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">航班号</th>
+                                <th scope="col">机长</th>
+                                <th scope="col">起飞机场</th>
+                                <th scope="col">落地机场</th>
+                                <th scope="col">机型</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="flight">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
+                         tabindex="0">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">席位</th>
+                                <th scope="col">频率</th>
+                                <th scope="col">管制人员</th>
+                                <th scope="col">权限</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="atc">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br>
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="min-height: 120px;">
+        <div class="collapse collapse-horizontal" id="va">
+            <div class="card card-body" style="width: 700px;">
+                <div class="tab-content" id="nav-tabContent--va">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">航班ID</th>
+                            <th scope="col">航班号</th>
+                            <th scope="col">机长</th>
+                            <th scope="col">起飞机场</th>
+                            <th scope="col">落地机场</th>
+                            <th scope="col">机型</th>
+                            <th scope="col">状态</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="va-data">
+                        </tbody>
+                    </table>
+                </div>
+
+                <br>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card card2" style="display: none;" id="card2">
+    <button type="button" class="btn btn-primary" onclick="closemodel()">关闭</button>
+    <h1></h1>
+    <div class="card">
+        <div class="about">
+            <h1 id="callsign"></h1>
+            <h1>
+                <button type="button" class="btn btn-primary"><span id="dep"></span></button>
+                ✈️
+                <button type="button" class="btn btn-primary"><span id="app"></span></button>
+            </h1>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="airport">
+            <ul class="list-group">
+                <li class="list-group-item">高度：<span id="alt"></span> 英尺</li>
+                <li class="list-group-item">速度：<span id="speed"></span> 英里/h</li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="table1">
+            <div id="table1" style="height: 100%"></div>
+        </div>
+    </div>
+    <br>
+    <ul class="list-group">
+        <li class="list-group-item">在线时间：<span id="onlinetime"></span></li>
+        <li class="list-group-item">经纬度：<span id="longitude"></span> / <span id="latitude"></span></li>
+        <li class="list-group-item">机长：<span id="pilot"></span></li>
+        <li class="list-group-item">机型：<span id="aircraft"></span></li>
+    </ul>
+</div>
+
+<div class="card card2" style="display: none;" id="card3">
+    <button type="button" class="btn btn-primary" onclick="closemodel()">关闭</button>
+    <h1></h1>
+    <div class="card">
+        <div class="about">
+            <h1>席位：<span id="callsignatc"></span></h1>
+            <h1>频率：<span id="fqatc"></span></h1>
+            <h1>管制人员：<span id="cid"></span></h1>
+            <h1>权限：<span id="rating"></span></h1>
+        </div>
+    </div>
+    <br>
+
+</div>
+
+<div class="card card2" style="display: none;" id="card4">
+    <button type="button" class="btn btn-primary" onclick="closemodel()">关闭</button>
+    <h1></h1>
+    <div class="card">
+        <div class="about">
+            <h1 id="callsign-va"></h1>
+            <h1>
+                <button type="button" class="btn btn-primary"><span id="dep-va"></span> <br /><span id="dep-icao-va"></span></button>
+                ✈️
+                <button type="button" class="btn btn-primary"><span id="app-va"></span> <br /><span id="app-icao-va"></span></button>
+            </h1>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="airport">
+            <ul class="list-group">
+                <li class="list-group-item">高度：<span id="alt-va"></span> 英尺</li>
+                <li class="list-group-item">速度：<span id="speed-va"></span> 英里/h</li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="table1">
+            <div id="table1-va" style="height: 100%"></div>
+        </div>
+    </div>
+    <br>
+    <ul class="list-group">
+        <li class="list-group-item">剩余时间：<span id="onlinetime-va"></span></li>
+        <li class="list-group-item">经纬度：<span id="longitude-va"></span> / <span id="latitude-va"></span></li>
+        <li class="list-group-item">机长：<span id="pilot-va"></span></li>
+        <li class="list-group-item">机型：<span id="aircraft-va"></span></li>
+    </ul>
+</div>
+<div id="map"></div>
+<div id="copyright">
+    MADE BY &copy; <a href="https://www.ariven.cn/">AM-STUDIO</a>
+</div>
+    </div>
+
+<script src="./js/mapbox-gl.js"></script>
+<script src="./js/map.js"></script>
+<script src="./js/onclick.js"></script>
+<script src="./js/flightatc.js"></script>
+<script src="./js/va.js"></script>
+<script src="./js/va_display.js"></script>
+<script src="./js/weather.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

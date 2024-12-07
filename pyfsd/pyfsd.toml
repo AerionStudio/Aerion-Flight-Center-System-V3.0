@@ -1,0 +1,28 @@
+[pyfsd.database]
+url = "sqlite:///pyfsd.db"
+
+[pyfsd.client]
+port = 6809
+motd = """Modify motd in pyfsd.toml."""
+motd_encoding = "ascii"
+blacklist = []
+
+[pyfsd.metar]
+mode = "cron"
+cron_time = 3600
+fetchers = ["NOAA"]
+
+[plugin.httpapi]
+port = 6067
+client_coding = "utf-8"
+use_heading = true
+token = "157fd42534a1a058a8ee3de1104dfbbfee6d37b1a3930157b25b24b8da4d680a"
+
+[plugin.debug]
+enabled = false
+
+[plugin.whazzupsaver]
+filename = "whazzup.json"  
+refresh_time = 5  
+use_heading = true  
+client_coding = "gbk"  

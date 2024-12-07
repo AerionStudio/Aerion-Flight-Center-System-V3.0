@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>权限一览</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <script src="../../js/checkall.js"></script>
+     <link rel="stylesheet" href="../../weather/css/animate.min.css">
+  <!--  <link rel="stylesheet" href="./css/index.css">-->
+  <style>
+    body {
+      padding: 30px 30px 30px 30px;
+      background-color: transparent !important;
+      display: flex;
+      justify-content: center;
+      /*align-items: center;*/
+      height: 100vh;
+    }
+
+    .card-container {
+      padding: 20px;
+      width: 250vh;
+    }
+
+    .atc {
+      height: 502px;
+      max-height: 502px;
+      overflow-y: auto;
+    }
+    #animatedCard {
+    opacity: 0; /* Initially hide the card */
+    animation: fadeInUp 1s forwards; /* Apply the fadeInUp animation */
+    }
+  </style>
+</head>
+<body>
+<div class="card-container animate__animated animate__fadeIn"  id="animatedCard" > 
+  <div class="card" style="padding: 10px">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card" style="padding: 20px;">
+          <h1 style="padding-top: 25px;padding-left: 10px">注意事项</h1>
+          <hr>
+          <table class="table">
+            <tbody>
+            <tr>
+              <td><span class="badge text-bg-secondary">X</span></td>
+              <td>无该席位权限</td>
+            </tr>
+            <tr>
+              <td><span class="badge text-bg-warning">T</span></td>
+              <td>该席位为实习训练阶段</td>
+            </tr>
+            <tr>
+              <td><span class="badge text-bg-success">√</span></td>
+              <td>该席位已放单</td>
+            </tr>
+            <tr>
+              <td><span class="badge text-bg-success">资深</span></td>
+              <td>该席位为资深席位</td>
+            </tr>
+            <tr>
+              <td><span class="badge text-bg-primary">√</span></td>
+              <td>该席位正式管制教员</td>
+            </tr>
+            <tr>
+              <td><span class="badge text-bg-primary">T</span></td>
+              <td>该席位实习管制教员</td>
+            </tr>
+            <tr>
+              <td><span class="badge text-bg-danger">暂停</span></td>
+              <td>该席位因考核/活动不合格暂停</td>
+            </tr>
+            <tr>
+              <td><span class="badge text-bg-info">因事暂停权限</span></td>
+              <td>管制员提前说明休假</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card atc">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">序号</th>
+              <th scope="col">邮箱</th>
+              <th scope="col">呼号</th>
+              <th scope="col">雷达权限</th>
+              <th scope="col">责任教员</th>
+              <th scope="col">塔台及以下</th>
+              <th scope="col">进近</th>
+              <th scope="col">区域</th>
+              <th scope="col">塔台及以下(教员)</th>
+              <th scope="col">进近(教员)</th>
+              <th scope="col">区域(教员)</th>
+              <th scope="col">备注</th>
+            </tr>
+            </thead>
+            <tbody id="atc">
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="./js/atc.js"></script>
+<script src="./js/bootstrap.js"></script>
+</body>
+</html>

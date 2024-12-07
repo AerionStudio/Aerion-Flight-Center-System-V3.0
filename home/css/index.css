@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'defult';
+    src: url("default.woff2");
+}
+@font-face {
+    font-family: defult-s;
+    src: url("default-s.woff2");
+}
+
+body {
+    background-color: transparent !important;
+}
+h1{
+    font-family: defult;
+}
+h2{
+    font-family: defult;
+}
+h3{
+    font-family: defult;
+}
+nav{
+    font-family: defult;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+.container {
+    max-width: unset !important;
+
+}
+
+.row {
+    margin: 0 !important;
+}
+
+.more {
+    float: right;
+}
+
+.card-title {
+    text-align: left;
+    font-size: 25px;
+    padding: 15px;
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #9ec5fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle-user-check {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color:#75b798;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle-plane{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color:#ffe69c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle-login{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color:#ea868f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-address-card{
+    color: #b02a37;
+}
+.fa-user {
+    color: #0d6efd;
+    font-size: 30px;
+}
+.fa-user-check{
+    color: #198754 ;
+}
+.fa-plane-departure{
+    color: #ffc720;
+}
+.card-body {
+    font-size: 25px;
+    text-align: left;
+}
+.time{
+    margin-left: 0px;
+}
+.alert{
+    font-family: defult-s;
+    margin-top: 20px;
+}
+iframe{
+    overflow: hidden;
+    height: 100vh;
+}
+::-webkit-scrollbar
+{
+    width:5px;
+    height:5px;
+    background-color:#F5F5F5;
+}
+/*定义滚动条轨道
+ 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+    background-color:#86b7fe;
+}
+/*定义滑块
+ 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+    background-color:#0d6efd;
+}
+.iframe-container {
+    width: 100%; /* Set the desired width */
+    height: 98vh; /* Set the desired height */
+
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.about h1 {
+    font-size: 15px;
+    padding-top: 10px;
+    text-align: center;
+}

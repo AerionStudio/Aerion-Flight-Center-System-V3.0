@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管制列表</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px 30px 30px 30px;
+            display: flex;
+            justify-content: center;
+            /*align-items: center;*/
+            height: 100vh;
+        }
+
+        .card-container {
+            padding: 20px;
+            width: 250vh;
+        }
+
+        .atc {
+            height: 502px;
+            max-height: 502px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="card-container">
+    <div class="card" style="padding: 10px">
+        <h1>修改权限</h1>
+        <div class="card">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">序号</th>
+                    <th scope="col">呼号</th>
+                    <th scope="col">邮箱</th>
+                    <th scope="col">雷达权限</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody id="atc">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<script>
+  function move(callsign) {
+            window.location.href='./edit.html?callsign='+callsign
+        }
+    document.addEventListener('DOMContentLoaded', function () {
+        const apiEndpoint = 'https://server.skydreamclub.cn/GetATC.php';
+
+        fetch(apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                var cards = ' ';
+                for (let i = 0; i < data.length; i++) {
+                    cards += '<tr>';
+                    cards += '<td>' + (i + 1) + '</td>';
+                    cards += '<td>' + data[i].user_num + '</td>';
+                    cards += '<td>' + data[i].user_email + '</td>';
+                    cards += '<td>' + getGradeLabel(data[i].user_grade) + '</td>';
+                    cards += '<td><button type="button" onclick="move(' + data[i].user_num + ')" class="btn btn-primary btn-sm">编辑</button><td>';
+                }
+                document.getElementById("atc").innerHTML=cards;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+      
+        function getGradeLabel(userGrade) {
+            switch (userGrade) {
+                case '2':
+                    return 'STU1';
+                case '3':
+                    return 'STU2';
+                case '4':
+                    return 'STU3';
+                case '5':
+                    return 'CTR1';
+                case '6':
+                    return 'CTR2';
+                case '7':
+                    return 'CTR3';
+                case '8':
+                    return 'INS1';
+                case '9':
+                    return 'INS2';
+                case '10':
+                    return 'INS3';
+                case '11':
+                    return 'SUP';
+                case '12':
+                    return 'ADM';
+                default:
+                    return 'NULL';
+            }
+        }
+    });
+
+</script>
+<script src="../js/bootstrap.js"></script>
+</body>
+</html>

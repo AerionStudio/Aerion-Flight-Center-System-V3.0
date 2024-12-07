@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../map/js/echarts.js"></script>
+    <script src="../map/js/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="../map/css/mapbox-gl.css">
+    <style>
+        #map {
+            width: 100%;
+            height: 50vh;
+            position: relative;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body style="padding: 40px">
+<div class="card" style="padding: 20px">
+    <h1>航班详细</h1><br>
+    <div class="card">
+        <div class="row g-0 text-center">
+            <div class="col-sm-6 col-md-8">
+                <div id="table1" style="height: 100%"></div>
+            </div>
+            <div class="col-6 col-md-4">
+                <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">航班号</th>
+                        <td><span id="flightnum"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">机长</th>
+                        <td><span id="cid"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">起飞机场</th>
+                        <td><span id="dep"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">落地机场</th>
+                        <td colspan="2"><span id="app"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">机型</th>
+                        <td colspan="2"><span id="aircraft"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">飞行时间</th>
+                        <td colspan="2"><span id="time"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">在线时间</th>
+                        <td colspan="2"><span id="online_time"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="card">
+        <div id="map"></div>
+    </div>
+</div>
+<script>
+
+
+</script>
+
+</body>
+<script src="./js/flight.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("https://attachment.sinofsx.com/forum/202308/20/012917uhuqvehzogccqkpu.png");
+}
+
+.control {
+    width: 540px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.item {
+    width: 540px;
+    height: 60px;
+    background: #eeeeee;
+}
+
+.item div {
+    width: 270px;
+    height: 60px;
+    display: inline-block;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.content {
+    width: 100%;
+}
+
+.content div {
+    margin: 20px 30px;
+    display: none;
+    text-align: left;
+}
+
+p {
+    color: #4a4a4a;
+    margin-top: 40px;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.content input[type="text"],
+.content input[type="password"] {
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid #adadad;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.content input[type="submit"] {
+    margin-top: 40px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid #adadad;
+    background: #0d6efd;
+    cursor: pointer;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+}
+
+.active {
+    background: white;
+}
+
+.item div:hover {
+    background: #f6f6f6;
+}
+
+.card-title {
+    margin: 50px 50px 20px 50px;
+    text-align: center;
+}
+
+.bu {
+    margin: 20px 20px 20px 20px;
+}
+
+.content div .verification-container {
+    display: flex;
+    align-items: center;
+}
+
+.content div .verification-container input {
+    flex: 1;
+}
+
+.btn-get-code {
+    margin-top: 10px;
+}
+
+.signup-2 title{
+    font-size: 25px;
+}
+
+input.check{
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+}
+.inputbg input.check {
+    text-align: center;
+    margin-right: 10px;
+
+}
+
+input.check {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 26px;
+    outline: none;
+}
+
+/* 鼠标悬停时的样式 */
+input.check:hover {
+    border-color: #999;
+}
+
+/* 聚焦时的样式 */
+input.check:focus {
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 禁用状态的样式 */
+input.check:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+a{
+    text-decoration-line: none;
+    color: #0b5ed7;
+}
+a:hover{
+    color: #9ec5fe;
+}

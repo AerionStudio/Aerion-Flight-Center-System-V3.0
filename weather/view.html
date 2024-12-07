@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+        <script src="../js/checkall.js"></script>
+    <title>天气查询</title>
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "kpp9urix5f");
+</script>
+</head>
+<body style="padding: 30px;">
+<div class="card animate__animated animate__fadeIn" id="animatedCard">
+    <div class="card-body">
+        <div class="title">天气查询 - <span id="ch-name"></span>
+            # <span id="iso_country"></span></div>
+        <div class="en_name">
+            <span id="en-name"></span>
+        </div>
+        <br>
+        <div class="metar">
+            <div class="metar_title">METAR</div>
+            <div class="metar_un"><code id="metar-un"></code></div>
+            <br>
+            <div class="metar_decode">
+                <div class="time">发布时间：<span id="time"></span> </div>
+                <div class="wind">风况：<span id="wind_dir"></span>
+                    °<span id="wind_speed"></span> <span id="wind_unit"></span></div>
+                <div class="visible">
+                    能见度: <span id="visibility"></span><span id="visibility_unit"></span> </div>
+                <div class="qnh">
+                    修正海压：<span id="qnh"></span><span id="qnh_unit"></span></div>
+                <div class="tem">温度： <span id="temperature"></span> °C</div>
+                <div class="dew">露点温度：<span id="dewpoint"></span>  °C</div>
+                <div class="for">预报：<span id="forecast"></span>   </div>
+            </div>
+        </div>
+        <br>
+        <div class="metar">
+            <div class="metar_title">TAF</div>
+            <div class="metar_un"><code id="taf-un"></code></div>
+        </div>
+    </div>
+</div>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/view.js"></script>
+</body>
+</html>

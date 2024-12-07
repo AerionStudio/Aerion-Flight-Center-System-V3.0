@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="./js/detailed.js"></script>
+    <link rel="stylesheet" href="./css/detailed.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <script src="./js/GetFlightList.js"></script>
+    <script src="./js/CheckUserFlight.js"></script>
+    <script src="./js/check.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "kpp9urix5f");
+    </script>
+
+</head>
+<body>
+<!-- 按钮触发模态框 -->
+<button type="button" id="checkDataBtn" class="btn btn-primary" style="display: none;">检查数据</button>
+
+<!-- 模态框 -->
+<div class="modal " tabindex="-1" role="dialog" id="dataModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">请先登录！</h5>
+                <!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="num">呼号</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" id="loginUsernum">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="paw">密码</span>
+                    <input type="password" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" id="loginPassword">
+                </div>
+                <br>
+                <button class="btn btn-outline-primary" style="width: 100%" onclick="login()">登录</button>
+            </div>
+            <div class="modal-footer">
+                <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card animate__animated animate__fadeIn" id="animatedCard">
+    <div class="back "><i class="fas fa-chevron-left"></i> <a href="index.html">返回</a></div>
+    <br>
+    <div class="card">
+        <div class="card-title">活动详细
+        </div>
+        <div class="card-title-1">SkyDreamClub连线飞行活动航线计划 - <span id="time">XXXX-XX-XX</span> 日常连飞活动
+        </div>
+        <br>
+        <p class="card-title-2"> FROM
+            <button type="button" class="btn btn-primary"><span id="dep_icao"></span> <span id="dep"></span></button>
+            TO
+            <button type="button" class="btn btn-primary"><span id="app_icao"></span> <span id="app"></span></button>
+    </div>
+    </p>
+    <div class="card">
+        <div class="route">飞行航路: <code id="route"></code></div>
+        <br>
+        <div class="fl"><span id="fl">向东飞行请使用单数高度层</span>: <code id="fl_all">8900米(FL291)、9500米(FL311)、10100米(FL331)、10700米(FL351)、11300米(FL371)、11900米(FL391)、12500米(FL411)</code>
+        </div>
+        <br>
+        <div class="begin">活动开始时间: <span id="begin"></span></div>
+        <br>
+        <div class="release">放行开始/结束时间: <span id="re_start"></span>/<span id="re_end"></span></div>
+        <br>
+        <div class="begin">建议导航数据版本: <span id="nav"></span></div>
+        <br>
+        <div class="begin">备注: <span id="more"></span></div>
+    </div>
+    <br>
+    <div class="card">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">机组报名
+                </button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">管制报名
+                </button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                 tabindex="0"><br>
+                    <div class="icon-container">
+                        <h2><i class="fas fa-check"></i> 已报名 <span id="flightnum"></span> 人
+                            <button id="sign-flight" value="0" type="button" class="btn btn-outline-warning application"
+                                    onclick="postUserFlightByValue()">Loading...
+                            </button>
+                        </h2><br>
+
+                    </div>
+
+                    <br>
+                    <div class="card">
+                        <table class="table  table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">UID</th>
+                                <th scope="col">报名时间</th>
+                            </tr>
+                            </thead>
+                            <tbody id="flightlist">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <br>
+                    <div class="atc-card" id="atc-card">
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/bootstrap.min.js"></script>
+    <script src="./js/detailed_atc.js"></script>
+    <script src="./js/PostUserFlgihtByValue.js"></script>
+    <script src="./js/PostUserAtcyValue.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
+</html>

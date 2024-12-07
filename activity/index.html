@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <!--    <link rel="stylesheet" href="./css/activity.css">-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/boxicons.min.css">
+        <script src="../js/checkall.js"></script>
+         <link rel="stylesheet" href="./css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "kpp9urix5f");
+    </script>
+       <style>
+        #animatedCard {
+            opacity: 0; /* Initially hide the card */
+            animation: fadeInUp 1s forwards; /* Apply the fadeInUp animation */
+        }
+    </style>
+</head>
+<body>
+
+<div class="card animate__animated animate__fadeIn" id="animatedCard">
+    <div class="card">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active btn btn-outline-success" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">报名中
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">正在进行
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">已结束
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="cancel-tab" data-bs-toggle="pill" data-bs-target="#cancel"
+                        type="button" role="tab" aria-controls="cancel" aria-selected="false">取消
+                </button>
+            </li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+             tabindex="0">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">活动名称</th>
+                        <th scope="col">活动时间</th>
+                        <th scope="col">放行时间</th>
+                        <th scope="col">导航数据</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="1">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">活动名称</th>
+                        <th scope="col">活动时间</th>
+                        <th scope="col">开始时间</th>
+                        <th scope="col">导航数据</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="2">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">活动名称</th>
+                        <th scope="col">活动时间</th>
+                        <th scope="col">放行时间</th>
+                        <th scope="col">导航数据</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="3">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="cancel" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">活动名称</th>
+                        <th scope="col">活动时间</th>
+                        <th scope="col">放行时间</th>
+                        <th scope="col">导航数据</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="4">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/index.js"></script>
+<!--<script src="./js/jquery-3.3.1.slim.min.js"></script>-->
+<script src="../js/bootstrap.min.js"></script>
+<!--<script src="./js/jquery.dataTables.min.js"></script>-->
+<!--<script src="./js/dataTables.bootstrap4.min.js"></script>-->
+<!--<script src="./js/dataTables.responsive.min.js"></script>-->
+<script src="./js/activity.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
+</html>

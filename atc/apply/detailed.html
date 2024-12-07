@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="./js/detailed.js"></script>
+    <link rel="stylesheet" href="./css/detailed.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <script src="./js/GetFlightList.js"></script>
+    <script src="./js/CheckUserFlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "kpp9urix5f");
+</script>
+    <script src="../../js/checkall.js"></script>
+</head>
+<body>
+<div class="card animate__animated animate__fadeIn" id="animatedCard">
+    <div class="back "><i class="fas fa-chevron-left"></i> <a href="index.html">返回</a></div>
+    <br>
+    <div class="card">
+        <div class="card-title">活动详细
+        </div>
+        <div class="card-title-1">AM-STUDIO连线飞行活动航线计划 - <span id="time">XXXX-XX-XX</span> 日常连飞活动</div>
+        <br>
+        <p class="card-title-2"> FROM
+            <button type="button" class="btn btn-primary"><span id="dep_icao"></span> <span id="dep"></span></button>
+            TO
+            <button type="button" class="btn btn-primary"><span id="app_icao"></span> <span id="app"></span></button>
+    </div>
+    </p>
+     <div class="card">
+        <div class="route">飞行航路: <code id="route"></code></div>
+        <br>
+        <div class="fl"><span id="fl">向东飞行请使用单数高度层</span>: <code id="fl_all">8900米(FL291)、9500米(FL311)、10100米(FL331)、10700米(FL351)、11300米(FL371)、11900米(FL391)、12500米(FL411)</code>
+        </div>
+        <br>
+        <div class="begin">活动开始时间: <span id="begin"></span></div>
+        <br>
+        <div class="release">放行开始/结束时间: <span id="re_start"></span>/<span id="re_end"></span></div>
+        <br>
+        <div class="begin">建议导航数据版本: <span id="nav"></span></div>
+    </div>
+    <br>
+    <div class="atc-card" id="atc-card">
+
+</div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="./js/PostUserFlgihtByValue.js"></script>
+</body>
+
+</html>

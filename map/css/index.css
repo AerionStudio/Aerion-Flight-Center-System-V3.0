@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300");
+
+.tabs {
+    --tab-links-height: 80px;
+    --tab-links-bg: linear-gradient(135deg, #e5eaf1 0%, #b9c5d8 100%);
+    --tab-links-overlay: linear-gradient(
+            135deg,
+            #6b8dd6 48%,
+            #6b8dd6 48%,
+            #6b8dd6 48%
+    );
+    --tab-link-bg: linear-gradient(
+            90deg,
+            transparent 70%,
+            rgba(255, 255, 255, 0.2) 100%
+    );
+    width: 100%;
+    max-width: 600px;
+    min-width: 300px;
+    font-family: Lato, sans-serif;
+}
+.tabs .tabs__links {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--tab-links-height);
+    background: var(--tab-links-bg);
+    list-style-type: none;
+}
+@media screen and (max-width: 750px) {
+    .tabs .tabs__links {
+        height: calc(var(--tab-links-height) / 2);
+    }
+}
+.tabs .tabs__links li {
+    flex: 1;
+}
+.tabs .tabs__links li .tabs__link {
+    all: unset;
+    position: relative;
+    height: var(--tab-links-height);
+    width: 100%;
+    background: var(--tab-link-bg);
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+}
+@media screen and (max-width: 750px) {
+    .tabs .tabs__links li .tabs__link {
+        height: calc(var(--tab-links-height) / 2);
+        font-size: 12px;
+    }
+}
+.tabs .tabs__links li .tabs__link::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: var(--tab-links-overlay);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s ease-in-out;
+}
+.tabs .tabs__links li .tabs__link .tabs__link__text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
+    transition: 0.5s;
+}
+.tabs .tabs__links li .tabs__link .tabs__link__text::before {
+    position: absolute;
+    content: attr(data-text);
+    top: 160%;
+    z-index: -1;
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+    opacity: 0.1;
+    transition: 1.2s ease-out;
+}
+@media screen and (max-width: 750px) {
+    .tabs .tabs__links li .tabs__link .tabs__link__text::before {
+        display: none;
+    }
+}
+.tabs .tabs__links li .tabs__link:hover::before {
+    transform: scaleY(1);
+}
+.tabs .tabs__links li .tabs__link:hover .tabs__link__text {
+    color: white;
+    opacity: 1;
+}
+.tabs .tabs__links li .tabs__link:hover .tabs__link__text::before {
+    transform: translateY(-300%);
+}
+.tabs .tabs__links li .tabs__link.active {
+    transform: scaleY(1.4);
+    background: white;
+}
+.tabs .tabs__links li .tabs__link.active::before {
+    transform: scaleY(0.05);
+}
+.tabs .tabs__links li .tabs__link.active .tabs__link__text {
+    transform: scaleY(0.714);
+}
+.tabs .tabs__links li .tabs__link.active .tabs__link__text, .tabs .tabs__links li .tabs__link.active:hover .tabs__link__text {
+    background: var(--tab-links-overlay);
+    background-clip: text;
+    color: transparent;
+    opacity: 1;
+}
+.tabs .tabs__contents {
+    position: relative;
+    margin-top: 0;
+    padding: 40px 60px;
+    background: white;
+    list-style-type: none;
+    transition: 1s;
+}
+.tabs .tabs__contents::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0px;
+    background: var(--tab-links-overlay);
+}
+.tabs .tabs__contents .tabs__content {
+    display: none;
+    min-height: 200px;
+    font-weight: 300;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(30%);
+    animation: fadeIn 0.6s forwards;
+}
+.tabs .tabs__contents .tabs__content.active {
+    display: block;
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.tabs__contents{
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar
+{
+    width:5px;
+    height:5px;
+    background-color:#F5F5F5;
+}
+/*定义滚动条轨道
+ 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+    background-color:#86b7fe;
+}
+/*定义滑块
+ 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+    background-color:#0d6efd;
+}
